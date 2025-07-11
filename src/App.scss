@@ -1,0 +1,231 @@
+// === App.scss ===
+
+@use "sass:color";
+
+$app-primary: #0056b3;
+$app-secondary: #007bff;
+$app-bg: #f5f7fa;
+$app-white: #fff;
+
+.app {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: $app-bg;
+  min-height: 100vh;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+// === Navbar ===
+.navbar {
+  background-color: $app-primary;
+  color: $app-white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .link-h2 {
+    margin: 0;
+
+    a {
+      color: $app-white;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: color.adjust($app-white, $lightness: 20%);
+    }
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+
+    a {
+      color: $app-white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+
+      &:hover {
+        color: color.adjust($app-white, $lightness: 20%);
+      }
+    }
+  }
+}
+
+// === Page Content ===
+.page {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: $app-white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  h3 {
+    color: $app-primary;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    input,
+    select,
+    button {
+      flex: 1 1 220px;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: $app-secondary;
+      color: $app-white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: color.adjust($app-secondary, $lightness: -10%);
+      }
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      background: #f1f1f1;
+      padding: 0.8rem 1rem;
+      margin-bottom: 0.5rem;
+      border-radius: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+
+      button {
+        background-color: transparent;
+        border: none;
+        color: $app-primary;
+        cursor: pointer;
+        margin-left: 0.5rem;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+// === Responsive Styles ===
+
+@media (max-width: 1024px) {
+  .page {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .link-h2 {
+      font-size: 1.4rem;
+    }
+
+    .nav-links {
+      flex-direction: column;
+      width: 100%;
+      margin-top: 0.5rem;
+
+      li {
+        width: 100%;
+
+        a {
+          display: block;
+          width: 100%;
+          padding: 0.5rem 0;
+        }
+      }
+    }
+  }
+
+  .page {
+    padding: 1rem;
+  }
+
+  .page form {
+    flex-direction: column;
+    gap: 0.75rem;
+
+    input,
+    select,
+    button {
+      width: 100%;
+      font-size: 1rem;
+    }
+  }
+
+  .page ul li {
+    flex-direction: column;
+    align-items: flex-start;
+
+    button {
+      margin-top: 0.5rem;
+      margin-left: 0;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 0.8rem;
+  }
+
+  .page h3 {
+    font-size: 1.2rem;
+  }
+
+  .page form {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .page form input,
+  .page form select,
+  .page form button {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .navbar {
+    padding: 1rem;
+
+    .link-h2 {
+      font-size: 1.2rem;
+    }
+
+    .nav-links {
+      gap: 0.3rem;
+    }
+  }
+}
